@@ -4,7 +4,6 @@ let phrases = document.querySelector('#phrase');
 let missed = 0;
 const startGame = document.querySelector('.btn__reset');
 const startScreen = document.querySelector('.start');
-const button = document.querySelectorAll('button');
 
 // Phrases
 phrases = ['It takes one to know one',
@@ -58,11 +57,15 @@ function checkLetter(button) {
 
 // Keyboard Event Listener
 qwerty.addEventListener('click', (e) => {
-    const button = e.target.textContent;
-    button.className = 'chosen';   
+    const button = e.target;
+    const buttonContent = button.textContent;
+    if (button.tagName === 'BUTTON') {
+        button.className = 'chosen'; 
+        button.disabled = 'true';
+    }  
     const letterFound = checkLetter(button);
-    console.log(letterFound)
-    if (letterFound !== button) {
+    checkLetter(button);
+    if (letterFound === null) {
         missed ++;
     }
 });
@@ -84,3 +87,4 @@ function checkWin() {
         lose.style.display = 'flex';
     }
 }
+checkWin();
