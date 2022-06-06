@@ -1,7 +1,7 @@
 // Variables
 const qwerty = document.querySelector('#qwerty');
 let phrases = document.querySelector('#phrase');
-const missed = 0;
+let missed = 0;
 const startGame = document.querySelector('.btn__reset');
 const startScreen = document.querySelector('.start');
 const button = document.querySelectorAll('button');
@@ -58,10 +58,32 @@ function checkLetter(button) {
 
 // Keyboard Event Listener
 qwerty.addEventListener('click', (e) => {
-    const letterFound = li.className = 'chosen';
-    const disabled = letterFound.attr('disabled', true);
-    checkLetter(letterFound);
+    button.className = 'chosen';
+    if (button.className = 'chosen' && 'keydown' ) {
+        
+    }
+    const letterFound = checkLetter(button);
+    if (letterFound !== null) {
+        let tries = document.querySelectorAll('.tries');
+        tries -+ 1;
+        missed += 1;
+    }
 });
 
 // Check Win Function
-function checkWin() {}
+function checkWin() {
+    const letterClass = document.querySelectorAll('.letter');
+    const showClass = document.querySelectorAll('.show');
+    if (letterClass.length === showClass.length) {
+        startScreen.className = 'win';
+        const win = document.querySelector('.win');
+        const displayText = document.querySelector('h2');
+        displayText.textContent = `You won!!!`
+        win.style.display ='flex';
+    } else if (missed >= 5) {
+        startScreen.className = 'lose';
+        const lose = document.querySelector('.lose');
+        displayText.textContent = `Sorry, please try again!`;
+        lose.style.display = 'flex';
+    }
+}
