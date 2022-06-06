@@ -59,23 +59,28 @@ function checkLetter(button) {
 // Keyboard Event Listener
 qwerty.addEventListener('click', (e) => {
     const button = e.target.textContent;
+    button.className = 'chosen';   
     const letterFound = checkLetter(button);
+    console.log(letterFound)
+    if (letterFound !== button) {
+        missed ++;
+    }
 });
 
 // // Check Win Function
-// function checkWin() {
-//     const letterClass = document.querySelectorAll('.letter');
-//     const showClass = document.querySelectorAll('.show');
-//     if (letterClass.length === showClass.length) {
-//         startScreen.className = 'win';
-//         const win = document.querySelector('.win');
-//         const displayText = document.querySelector('h2');
-//         displayText.textContent = `You won!!!`
-//         win.style.display ='flex';
-//     } else if (missed >= 5) {
-//         startScreen.className = 'lose';
-//         const lose = document.querySelector('.lose');
-//         displayText.textContent = `Sorry, please try again!`;
-//         lose.style.display = 'flex';
-//     }
-// }
+function checkWin() {
+    const letterClass = document.querySelectorAll('.letter');
+    const showClass = document.querySelectorAll('.show');
+    if (letterClass.length === showClass.length) {
+        startScreen.className = 'win';
+        const win = document.querySelector('.win');
+        const displayText = document.querySelector('h2');
+        displayText.textContent = `You won!!!`
+        win.style.display ='flex';
+    } else if (missed >= 5) {
+        startScreen.className = 'lose';
+        const lose = document.querySelector('.lose');
+        displayText.textContent = `Sorry, please try again!`;
+        lose.style.display = 'flex';
+    }
+}
