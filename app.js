@@ -29,7 +29,7 @@ const phraseArray = getRandomPhrasesAsArray(phrases); // Variable for Random Phr
 
 // Game Display
 function addPhraseToDisplay(arr) {
-    for (let i = 0; i <= arr.length; i++ ) { 
+    for (let i = 0; i < arr.length; i++ ) { 
         const ul = document.querySelector('ul');
         const li = document.createElement('li');
         li.textContent = arr[i];
@@ -42,15 +42,15 @@ function addPhraseToDisplay(arr) {
     }
     return arr;
 }
-
+addPhraseToDisplay(phraseArray)
 // Check Letter Function
 function checkLetter(button) {
-    const letters = document.querySelectorAll('.letter');
-    let match = '';
-    for (let i = 0; i <= letters.length; i++ ){
-        if (button === letters[i]) {
-            letters.ClassName = 'show';
-            match += button;
+    const letters = document.querySelectorAll('ul li');
+    let match = null;
+    for (let i = 0; i < letters.length; i++ ){
+        if (button === letters[i].textContent.toLowerCase()) {
+            letters.className = 'show';
+            match = button;
         }
     }
     return match;
@@ -58,32 +58,24 @@ function checkLetter(button) {
 
 // Keyboard Event Listener
 qwerty.addEventListener('click', (e) => {
-    button.className = 'chosen';
-    if (button.className = 'chosen' && 'keydown' ) {
-        
-    }
+    const button = e.target.textContent;
     const letterFound = checkLetter(button);
-    if (letterFound !== null) {
-        let tries = document.querySelectorAll('.tries');
-        tries -+ 1;
-        missed += 1;
-    }
 });
 
-// Check Win Function
-function checkWin() {
-    const letterClass = document.querySelectorAll('.letter');
-    const showClass = document.querySelectorAll('.show');
-    if (letterClass.length === showClass.length) {
-        startScreen.className = 'win';
-        const win = document.querySelector('.win');
-        const displayText = document.querySelector('h2');
-        displayText.textContent = `You won!!!`
-        win.style.display ='flex';
-    } else if (missed >= 5) {
-        startScreen.className = 'lose';
-        const lose = document.querySelector('.lose');
-        displayText.textContent = `Sorry, please try again!`;
-        lose.style.display = 'flex';
-    }
-}
+// // Check Win Function
+// function checkWin() {
+//     const letterClass = document.querySelectorAll('.letter');
+//     const showClass = document.querySelectorAll('.show');
+//     if (letterClass.length === showClass.length) {
+//         startScreen.className = 'win';
+//         const win = document.querySelector('.win');
+//         const displayText = document.querySelector('h2');
+//         displayText.textContent = `You won!!!`
+//         win.style.display ='flex';
+//     } else if (missed >= 5) {
+//         startScreen.className = 'lose';
+//         const lose = document.querySelector('.lose');
+//         displayText.textContent = `Sorry, please try again!`;
+//         lose.style.display = 'flex';
+//     }
+// }
