@@ -44,17 +44,15 @@ function addPhraseToDisplay(arr) {
 }
 
 // Check Letter Function
-function checkLetter() {
-    addEventListener('click', (e) => {
-        const letters = document.querySelector('li');
-        let match = null;
-        for (let i = 0; i <= letters.length; i++ ){
-            if (button === letters[i]) {
-                li.ClassName = 'show';
-                match += button.value;
-            }
+function checkLetter(button) {
+    const letters = document.querySelectorAll('.letter');
+    let match = '';
+    for (let i = 0; i <= letters.length; i++ ){
+        if (button === letters[i]) {
+            letters.ClassName = 'show';
+            match += button;
         }
-    });
+    }
     return match;
 }
 
