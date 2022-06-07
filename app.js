@@ -42,11 +42,14 @@ function addPhraseToDisplay(arr) {
     return arr;
 }
 addPhraseToDisplay(phraseArray)
+
 // Check Letter Function
 function checkLetter(button) {
     const letters = document.querySelectorAll('ul li');
     let match = null;
     for (let i = 0; i < letters.length; i++ ){
+        const letterContent = letters[i].textContent;
+        console.log(letterContent)
         if (button === letters[i].textContent.toLowerCase()) {
             letters.className = 'show';
             match = button;
@@ -63,8 +66,8 @@ qwerty.addEventListener('click', (e) => {
         button.className = 'chosen'; 
         button.disabled = 'true';
     }  
-    const letterFound = checkLetter(button);
-    checkLetter(button);
+    const letterFound = checkLetter(buttonContent);
+    checkLetter(buttonContent);
     if (letterFound === null) {
         missed ++;
     }
