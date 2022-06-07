@@ -65,13 +65,15 @@ qwerty.addEventListener('click', (e) => {
     if (button.tagName === 'BUTTON') {
         button.className = 'chosen'; 
         button.disabled = 'true';
-    }  
+
     const letterFound = checkLetter(buttonContent);
     if (letterFound === null) {
         const hearts = document.querySelectorAll('.tries img');
         hearts[missed].src = 'images/lostHeart.png';
         missed ++;
         }
+    }  
+    
     // Alternative 
     /*
     if (letterFound === null) {
@@ -83,11 +85,12 @@ qwerty.addEventListener('click', (e) => {
     }
     */
     checkWin();
-    gameReset();
 });
+    // gameReset();
 
 // // Check Win Function
 function checkWin() {
+    startGame.textContent = `Reset Game`;
     const letterClass = document.querySelectorAll('.letter');
     const showClass = document.querySelectorAll('.show');
     if (letterClass.length === showClass.length) {
@@ -104,13 +107,18 @@ function checkWin() {
 }
 
 // Reset Game 
-function gameReset() {
-    startGame.textContent = `Reset Game`;
-    startGame.addEventListener('click', (e) => {
-        missed = 0;
-        const tries = document.querySelectorAll('.tries img')[missed];
-        const triesRestart = document.createElement('li');
-        triesRestart.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px">';
-        triesRestart.parentNode.replaceChild(triesRestart, tries);
-    });
+/* function gameReset() {
+    missed = 0;
+    const buttons = document.querySelectorAll('.chosen');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons) {
+            buttons.classList.remove('chosen');
+            buttons.disabled = 'false';
+        }
+    }
+    const hearts = document.querySelectorAll('.tries img');
+    for (i = 0; i < hearts.length; i++) {
+        hearts.src = 'images/liveHeart.png';
+    }
 }
+*/
