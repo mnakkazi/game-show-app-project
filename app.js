@@ -88,7 +88,7 @@ qwerty.addEventListener('click', (e) => {
 });
     // gameReset();
 
-// // Check Win Function
+// Check Win Function
 function checkWin() {
     startGame.textContent = `Reset Game`;
     const letterClass = document.querySelectorAll('.letter');
