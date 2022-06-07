@@ -35,6 +35,7 @@ function addPhraseToDisplay(arr) {
         ul.appendChild(li);
         if (li.textContent !== ' ') {
             li.className = 'letter';
+            li.style.transition = 'all 2s';
         } else {
             li.className = 'space';
         }
@@ -67,9 +68,22 @@ qwerty.addEventListener('click', (e) => {
     }  
     const letterFound = checkLetter(buttonContent);
     if (letterFound === null) {
+        const hearts = document.querySelectorAll('.tries img');
+        hearts[missed].src = 'images/lostHeart.png';
+        missed ++;
+        }
+    // Alternative 
+    /*
+    if (letterFound === null) {
+        const tries = document.querySelectorAll('.tries img')[missed];
+        const lost = document.createElement('li');
+        lost.innerHTML = '<img src="images/lostHeart.png" height="35px" width="30px">';
+        tries.parentNode.replaceChild(lost, tries);
         missed ++;
     }
+    */
     checkWin();
+    gameReset();
 });
 
 // // Check Win Function
@@ -87,4 +101,16 @@ function checkWin() {
         displayLose.textContent = `Sorry, Out of Moves!`;
         startScreen.style.display = 'flex';
     }
+}
+
+// Reset Game 
+function gameReset() {
+    startGame.textContent = `Reset Game`;
+    startGame.addEventListener('click', (e) => {
+        missed = 0;
+        const tries = document.querySelectorAll('.tries img')[missed];
+        const triesRestart = document.createElement('li');
+        triesRestart.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px">';
+        triesRestart.parentNode.replaceChild(triesRestart, tries);
+    });
 }
