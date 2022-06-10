@@ -42,7 +42,7 @@ function addPhraseToDisplay(arr) {
     }
     return arr;
 }
-addPhraseToDisplay(phraseArray)
+addPhraseToDisplay(phraseArray) // Generate random phrase
 
 // Check Letter Function
 function checkLetter(button) {
