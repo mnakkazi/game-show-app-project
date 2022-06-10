@@ -6,10 +6,10 @@ const startGame = document.querySelector('.btn__reset');
 const startScreen = document.querySelector('.start');
 
 // Phrases
-phrases = ['It takes one to know one',
-           'Kill two birds with one stone',
-           'Break a leg',
-           'Better late than never',
+phrases = ['Break a leg',
+           'Piece of cake',
+           'No pain no gain',
+           'Spill the beans',
            'A blessing in disguise'
           ];
 
@@ -86,7 +86,6 @@ qwerty.addEventListener('click', (e) => {
     */
     checkWin();
 });
-    // gameReset();
 
 // Check Win Function
 function checkWin() {
@@ -96,29 +95,35 @@ function checkWin() {
     if (letterClass.length === showClass.length) {
         startScreen.classList.add('win');
         const displayWin = document.querySelector('h2');
-        displayWin.textContent = `You won!!!`
+        displayWin.textContent = `You win!!!`
         startScreen.style.display ='flex';
+        gameReset();
     } else if (missed >= 5) {
         startScreen.classList.add('lose');
         const displayLose = document.querySelector('h2');
         displayLose.textContent = `Sorry, Out of Moves!`;
         startScreen.style.display = 'flex';
+        gameReset();
     }
 }
 
 // Reset Game 
-/* function gameReset() {
+ function gameReset() {
     missed = 0;
     const buttons = document.querySelectorAll('.chosen');
     for (i = 0; i < buttons.length; i++) {
-        if (buttons) {
-            buttons.classList.remove('chosen');
-            buttons.disabled = 'false';
-        }
+        buttons[i].className = '';
+        buttons[i].disabled = false;
     }
-    const hearts = document.querySelectorAll('.tries img');
+    const letters = document.querySelectorAll('ul li');
+    for (i = 0; i < letters.length; i++) {
+        letters[i].className = '';
+        letters[i].textContent = '';
+    }
+    let hearts = document.querySelectorAll('ol li'); 
     for (i = 0; i < hearts.length; i++) {
-        hearts.src = 'images/liveHeart.png';
+        hearts[i].firstElementChild.src = 'images/liveHeart.png';
     }
+    const newRandomPhrase = getRandomPhrasesAsArray(phrases);
+    addPhraseToDisplay(newRandomPhrase);
 }
-*/
