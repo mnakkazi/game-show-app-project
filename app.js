@@ -94,12 +94,14 @@ function checkWin() {
     const showClass = document.querySelectorAll('.show');
     if (letterClass.length === showClass.length) {
         startScreen.classList.add('win');
+        startScreen.classList.remove('lose');
         const displayWin = document.querySelector('h2');
         displayWin.textContent = `You win!!!`
         startScreen.style.display ='flex';
         gameReset();
     } else if (missed >= 5) {
         startScreen.classList.add('lose');
+        startScreen.classList.remove('win');
         const displayLose = document.querySelector('h2');
         displayLose.textContent = `Sorry, Out of Moves!`;
         startScreen.style.display = 'flex';
