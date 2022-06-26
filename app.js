@@ -10,7 +10,7 @@ phrases = ['Break a leg',
            'Piece of cake',
            'No pain no gain',
            'Spill the beans',
-           'A blessing in disguise'
+           'Blessing in disguise'
           ];
 
 // Inititialize game 
